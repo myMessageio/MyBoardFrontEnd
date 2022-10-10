@@ -1,0 +1,178 @@
+import React,{ useEffect, useState } from "react";
+
+// components
+
+import SideUserInf from "../../components/Users/SideUserInf";
+//import UserDetailInf from "../../components/Users/UserDetailInf.js";
+import UserOverView from "../../components/Users/UserOverview"
+import UserPosts from "../../components/Users/UserPosts"
+import UserComments from "../../components/Users/UserComments"
+import UserUpvoted from "../../components/Users/UserUpvoted"
+import UserDownVoted from "../../components/Users/UserDownVoted"
+import UserAwarded from "../../components/Users/UserAwarded";
+import UserChannels from "../../components/Users/UserChannels";
+
+import { useParams } from 'react-router-dom'
+import { Link,Route,Routes } from "react-router-dom";
+export default function UserDetailnf({
+  account, chainId, active, setIsOpenSwitchNetworkModal,selNetworks
+}) {
+  const {seluser}=useParams() 
+  useEffect(()=>{
+  
+    
+
+  },[seluser,active])
+  //getDataFromCloudFunction
+ 
+
+  
+  return (
+    <>
+    <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
+      <div className="container flex flex-wrap justify items-center mx-auto">
+      
+        <button data-collapse-toggle="mobile-menu" type="button" className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu" aria-expanded="false">
+          <span className="sr-only">Open main menu</span>
+          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>
+          <svg className="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+        </button>
+        <div className="hidden w-full md:block md:w-auto" id="mobile-menu">
+          <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+          
+            <li>
+              <Link to="overview" 
+              className={"block py-2 pr-4 pl-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent "+        
+                  (window.location.href.indexOf(`/user/${seluser}/overview`) != -1
+                              ? "text-lightBlue-500 hover:text-lightBlue-600"
+                              : "text-blueGray-700 hover:text-blueGray-500")
+                  
+                  }>  OVERVIEW
+              </Link>
+            </li>
+            <li>
+              <Link to="posts" 
+              className={"block py-2 pr-4 pl-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent "+        
+              (window.location.href.indexOf(`/user/${seluser}/posts`) != -1
+                          ? "text-lightBlue-500 hover:text-lightBlue-600"
+                          : "text-blueGray-700 hover:text-blueGray-500")
+              
+              }>
+                POSTS
+                </Link>
+            </li>
+
+            <li> 
+              <Link to="comments" 
+              className={"block py-2 pr-4 pl-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent "+        
+              (window.location.href.indexOf(`/user/${seluser}/comments`) != -1
+                          ? "text-lightBlue-500 hover:text-lightBlue-600"
+                          : "text-blueGray-700 hover:text-blueGray-500")
+              
+              }>
+                COMMENTS
+                </Link>
+            </li>
+          
+            
+            <li>
+              <Link to="upvoted"
+                className={"block py-2 pr-4 pl-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent "+        
+                (window.location.href.indexOf(`/user/${seluser}/upvoted`) != -1
+                            ? "text-lightBlue-500 hover:text-lightBlue-600"
+                            : "text-blueGray-700 hover:text-blueGray-500")
+                
+                }>
+                UPVOTED
+                </Link>
+            </li>
+            <li>
+              <Link to="downvoted" 
+                className={"block py-2 pr-4 pl-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent "+        
+                (window.location.href.indexOf(`/user/${seluser}/downvoted`) != -1
+                            ? "text-lightBlue-500 hover:text-lightBlue-600"
+                            : "text-blueGray-700 hover:text-blueGray-500")
+                
+                }>
+                DOWNVOTED
+              </Link>
+            </li>
+            <li>
+              <Link to="awarded"
+                className={"block py-2 pr-4 pl-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent "+        
+                (window.location.href.indexOf(`/user/${seluser}/awarded`) != -1
+                            ? "text-lightBlue-500 hover:text-lightBlue-600"
+                            : "text-blueGray-700 hover:text-blueGray-500")
+                
+                }>
+                AWARDED
+                </Link>
+            </li>
+            <li>
+              <Link to="channels"
+                className={"block py-2 pr-4 pl-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent "+        
+                (window.location.href.indexOf(`/user/${seluser}/channels`) != -1
+                            ? "text-lightBlue-500 hover:text-lightBlue-600"
+                            : "text-blueGray-700 hover:text-blueGray-500")
+                
+                }>
+                Channels
+                </Link>
+            </li>
+          
+          
+        
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+ 
+
+  
+       <div className="px-4 md:px-10 mx-auto w-full py-10 ">      
+        <div className="container mx-auto">       
+          <div className="flex flex-wrap relative">    
+            <div className="w-full lg:w-8/12 px-4 ">
+            {seluser&&(            
+              <Routes> 
+                 <Route path="/" exact element={ <UserOverView   seluser={seluser}  account={account}
+                                          active={active} chainId={chainId} setIsOpenSwitchNetworkModal={setIsOpenSwitchNetworkModal}
+                                          selNetworks={selNetworks}/>} />
+                               
+                <Route path="overview" exact element={ <UserOverView    seluser={seluser}  account={account}  selNetworks={selNetworks}
+                                          active={active} chainId={chainId} setIsOpenSwitchNetworkModal={setIsOpenSwitchNetworkModal}/>} />
+                <Route path="posts" exact element={ <UserPosts   seluser={seluser}  account={account} selNetworks={selNetworks}
+                                          active={active} chainId={chainId} setIsOpenSwitchNetworkModal={setIsOpenSwitchNetworkModal} />} />
+                <Route path="comments" exact element={ <UserComments   seluser={seluser}  account={account} selNetworks={selNetworks}
+                                          active={active} chainId={chainId} setIsOpenSwitchNetworkModal={setIsOpenSwitchNetworkModal} />} />
+              
+               
+                <Route path="upvoted" exact element={ <UserUpvoted   seluser={seluser}  account={account} selNetworks={selNetworks}
+                                      active={active} chainId={chainId} setIsOpenSwitchNetworkModal={setIsOpenSwitchNetworkModal} />} />
+                <Route path="downvoted" exact element={ <UserDownVoted   seluser={seluser}  account={account} selNetworks={selNetworks}
+                                      active={active} chainId={chainId} setIsOpenSwitchNetworkModal={setIsOpenSwitchNetworkModal} />} />
+                <Route path="awarded" exact element={ <UserAwarded   seluser={seluser}  account={account} selNetworks={selNetworks}
+                                      active={active} chainId={chainId} setIsOpenSwitchNetworkModal={setIsOpenSwitchNetworkModal} />} />
+                <Route path="channels" exact element={ <UserChannels   seluser={seluser}  account={account} selNetworks={selNetworks}
+                                      active={active} chainId={chainId} setIsOpenSwitchNetworkModal={setIsOpenSwitchNetworkModal} />} />
+                
+              
+            </Routes>
+              )}
+            </div>
+            <div className="w-full lg:w-4/12 px-4">
+              {seluser&&(
+                <SideUserInf 
+                  seluseraccount={seluser}
+                />
+              )}
+            </div>
+          </div>
+          </div>
+        </div>
+
+      
+    </>
+  );
+}

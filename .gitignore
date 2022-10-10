@@ -1,0 +1,14 @@
+
+node_modules/.bin/acorn
+node_modules/.bin/acorn.cmd
+node_modules/.bin/ansi-html
+*.cmd
+node_modules/.bin/atob
+node_modules/.bin/browserslist
+node_modules/.bin/crc32
+node_modules/.bin/autoprefixer
+node_modules/.bin/cborg
+node_modules/.bin/color-support
+node_modules/*
+build/*
+Myredditgraph/node_modules/*
