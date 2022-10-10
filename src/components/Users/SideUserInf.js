@@ -121,7 +121,7 @@ export default function SideUserInf({seluseraccount,
                   <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
                   {channelcal?(<>{channelcal.moonbeamchannels}</>):(<>0</>)}
                   </span>
-                  <span className="text-sm text-blueGray-400 uppercase">MoonBeam</span>
+                  <span className="text-sm text-blueGray-400 uppercase">Moonbeam</span>
                 </div>
               </div>
               {/* <div className="flex justify-center py-2  pt-2 ">               
@@ -193,7 +193,7 @@ export default function SideUserInf({seluseraccount,
                  
                   {postcal?(<>{postcal.moonbeamposts}</>):(<>0</>)}
                   </span>
-                  <span className="text-sm text-blueGray-400 uppercase">MoonBeam</span>
+                  <span className="text-sm text-blueGray-400 uppercase">Moonbeam</span>
                 </div>
               </div>
               {/* <div className="flex justify-center py-2  pt-2 ">               
@@ -250,7 +250,7 @@ export default function SideUserInf({seluseraccount,
 
                   {postawardedCal?(<>{postawardedCal.moonbeamawarded}</>):(<>0</>)}
                   </span>
-                  <span className="text-sm text-blueGray-400 uppercase">MoonBeam</span>
+                  <span className="text-sm text-blueGray-400 uppercase">Moonbeam</span>
                 </div>
               </div>
               {/* <div className="flex justify-center py-2  pt-2 ">               
@@ -301,7 +301,7 @@ export default function SideUserInf({seluseraccount,
                  
                   {commentawardedCal?(<>{commentawardedCal.moonbeamawarded}</>):(<>0</>)}
                   </span>
-                  <span className="text-sm text-blueGray-400 uppercase">MoonBeam</span>
+                  <span className="text-sm text-blueGray-400 uppercase">Moonbeam</span>
                 </div>
               </div>
               {/* <div className="flex justify-center py-2  pt-2 ">               

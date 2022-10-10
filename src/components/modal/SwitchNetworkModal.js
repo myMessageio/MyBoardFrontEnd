@@ -76,7 +76,7 @@ const SwitchNetworkModal = ({setIsOpen, postSort,switchNetwork,connectWallet,acc
                             onClick={()=>{selectNetwork(networkChainIds["moonbeam"]);}}
                             className="flex items-center p-3 text-base font-bold text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
                                 
-                                <span className="flex-1 ml-3 whitespace-nowrap">MoonBeam</span>
+                                <span className="flex-1 ml-3 whitespace-nowrap">Moonbeam</span>
                                
                             </button>
                         </li>

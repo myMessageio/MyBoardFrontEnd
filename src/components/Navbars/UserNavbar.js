@@ -63,9 +63,9 @@ export default function  UserNavbar(
     const MoonbeamSelectState=sessionStorage.getItem("moonbeam")
     const TestBscSelectState=sessionStorage.getItem("testbsc")
     const MumbaiSelectState=sessionStorage.getItem("mumbai")
-    const MbaseSelectState=sessionStorage.getItem("mbase")
-    const newNetworks={"bsc":(BscSelectState=="true"),"polygon":PolygonSelectState=="true","moonbeam":MoonbeamSelectState=="true","testbsc":TestBscSelectState=="true","mumbai":MumbaiSelectState=="true","mbase":MbaseSelectState=="true"}
-  
+    const MbaseSelectState=sessionStorage.getItem("mbase")   
+    const newNetworks={"bsc":(BscSelectState=="true"),"polygon":PolygonSelectState=="true","moonbeam":(MoonbeamSelectState=="true"),"testbsc":TestBscSelectState=="true","mumbai":MumbaiSelectState=="true","mbase":MbaseSelectState=="true"}
+
     setSelNetworks(newNetworks)
 
   }
