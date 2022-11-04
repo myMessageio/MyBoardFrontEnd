@@ -8,7 +8,6 @@ import 'react-quill/dist/quill.snow.css';
 import 'react-quill/dist/quill.bubble.css';
 import {SuccessToast,ErrorToast} from "../toast/toast"
 import Moment from 'react-moment'; 
-
 import {mainDataEncryptUploadToIpfs
   } from "../../ipfs/ipfs"
 

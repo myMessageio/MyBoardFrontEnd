@@ -1,7 +1,8 @@
 import React, { useEffect,useState } from "react";
 import { Link } from "react-router-dom";
-import 'react-quill/dist/quill.snow.css';
-import 'react-quill/dist/quill.bubble.css';
+// import 'react-quill/dist/quill.snow.css';
+// import 'react-quill/dist/quill.bubble.css';
+import 'quill/dist/quill.snow.css';
 import  Loading from "../../components/Loading/loading";
 import Moment from 'react-moment';
 
@@ -266,6 +267,21 @@ export default function PostItem({
               </h3>)}
               {postDetailInf.content&&(
                 <>
+                  {(postDetailInf.postType==2)&&(
+                    <>
+                        <h3 className="text-sm mb-2 font-semibold leading-normal">
+                          abstract
+                          </h3>                    
+                        <div className="ql-editor" 
+                            style={{height:"auto",padding: "0px"}}>
+                          <div dangerouslySetInnerHTML={{__html: postDetailInf.content.abstractDescription}}></div>
+                        </div>
+                    </>
+                  )}
+                  <h3 className="text-sm mb-2 font-semibold leading-normal">
+                    content
+                  </h3>   
+
                   {(postDetailInf.postSort==0||postDetailInf.postSort==3)&&(
                       <div className="ql-editor" 
                       style={{height:"auto",padding: "0px"}}>

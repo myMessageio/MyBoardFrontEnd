@@ -33,7 +33,7 @@ export default function  UserNavbar(
   { currentUserProfile,
     chainId,
     active,   
-  connectWallet,
+  
   disconnectWallet,
   account,
   setSelNetworks,selNetworks,
@@ -222,15 +222,15 @@ export default function  UserNavbar(
                               defaultChecked={selNetworks["moonbeam"]}/>
                               <label htmlFor="default-checkbox" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Moonbeam</label>
                             </li>
-                            {/* <li className="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
+                            <li className="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
                               <input id="default-checkbox" type="checkbox"  className="w-4 h-4 text-blue-600 bg-gray-100 rounded  focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                               onChange={(e)=>{selectNetwork(e,"polygon")}}
                               defaultChecked={selNetworks["polygon"]}/>
                               <label htmlFor="default-checkbox" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Polygon</label>
-                            </li>                           */}
+                            </li>                          
                           </ul>
                         </div>
-                        {/* <div className="mt-2 block">
+                        <div className="mt-2 block">
                           <div className="mb-2 block">
                             <label
                               
@@ -260,7 +260,7 @@ export default function  UserNavbar(
                             </li>
                     
                           </ul>
-                        </div> */}
+                        </div>
                       </div>
                     </PopoverContent>
                   </Popover>

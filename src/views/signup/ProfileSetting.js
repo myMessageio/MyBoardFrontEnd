@@ -3,7 +3,7 @@ import '../../components/ImageUploadSingle/App.css';
 
 import { toast } from 'react-toastify';
 import {useNavigate} from "react-router-dom"
-import 'react-toastify/dist/ReactToastify.css';
+
 import ImageUploader from "../../components/ImageUpload/index.js";
 import  Loading from "../../components/Loading/loading"
 

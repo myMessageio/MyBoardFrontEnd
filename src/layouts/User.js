@@ -37,7 +37,6 @@ export default function Landing() {
   const [currentUserProfile,setCurrentUserProfile]=useState(null)
   // const [currentUserInf,setCurrentUserInf]=useState(null)
 
-  const [activating,setActivating]=useState(false)
   const [selNetworks,setSelNetworks]=useState({"bsc":false,"polygon":false,"moonbeam":false,"testbsc":false,"mumbai":false,"mbase":false})
   const [[isOpenSwitchNetworkModal,singleSelect,selectchainId],setIsOpenSwitchNetworkModal]=useState([false,false,'0']) 
 
@@ -77,24 +76,24 @@ export default function Landing() {
   
     if(BscSelectState==undefined||PolygonSelectState==undefined||MoonbeamSelectState==undefined||TestBscSelectState==undefined
       ||MumbaiSelectState==undefined||MbaseSelectState==undefined){     
-      // sessionStorage.setItem("bsc",true)    
-      // sessionStorage.setItem("moonbeam",true)
-      // sessionStorage.setItem("polygon",true)
-      // sessionStorage.setItem("testbsc",true)
-      // sessionStorage.setItem("mumbai",true)
-      // sessionStorage.setItem("mbase",true)
       sessionStorage.setItem("bsc",true)    
       sessionStorage.setItem("moonbeam",true)
-      sessionStorage.setItem("polygon",false)
-      sessionStorage.setItem("testbsc",false)
-      sessionStorage.setItem("mumbai",false)
-      sessionStorage.setItem("mbase",false)
+      sessionStorage.setItem("polygon",true)
+      sessionStorage.setItem("testbsc",true)
+      sessionStorage.setItem("mumbai",true)
+      sessionStorage.setItem("mbase",true)
+      // sessionStorage.setItem("bsc",true)    
+      // sessionStorage.setItem("moonbeam",true)
+      // sessionStorage.setItem("polygon",false)
+      // sessionStorage.setItem("testbsc",false)
+      // sessionStorage.setItem("mumbai",false)
+      // sessionStorage.setItem("mbase",false)
 
-      // setSelNetworks({"bsc":true,"polygon":true,"moonbeam":true,"testbsc":true,"mumbai":true,"mbase":true})
+      setSelNetworks({"bsc":true,"polygon":true,"moonbeam":true,"testbsc":true,"mumbai":true,"mbase":true})
       setSelNetworks({"bsc":true,"polygon":false,"moonbeam":true,"testbsc":false,"mumbai":false,"mbase":false})
     }else{
-      // const xx={"bsc":(BscSelectState=="true"),"polygon":PolygonSelectState=="true","moonbeam":MoonbeamSelectState=="true","testbsc":TestBscSelectState=="true","mumbai":MumbaiSelectState=="true","mbase":MbaseSelectState=="true"}
-      const xx={"bsc":(BscSelectState=="true"),"polygon":false,"moonbeam":MoonbeamSelectState=="true","testbsc":false,"mumbai":false,"mbase":false}
+      const xx={"bsc":(BscSelectState=="true"),"polygon":PolygonSelectState=="true","moonbeam":MoonbeamSelectState=="true","testbsc":TestBscSelectState=="true","mumbai":MumbaiSelectState=="true","mbase":MbaseSelectState=="true"}
+      // const xx={"bsc":(BscSelectState=="true"),"polygon":false,"moonbeam":MoonbeamSelectState=="true","testbsc":false,"mumbai":false,"mbase":false}
 
       setSelNetworks(xx)
 
@@ -119,7 +118,7 @@ export default function Landing() {
           method: 'wallet_switchEthereumChain',
             params: [{ chainId: Web3.utils.toHex(selchainId) }],
           });
-        setActivating(false)
+      
       } catch (switchError) {
       
         // This error code indicates that the chain has not been added to MetaMask.
@@ -146,12 +145,12 @@ export default function Landing() {
   async function connectWallet(selchainId){    
    
     try {
-      setActivating(true)
+
       await activate(injected)
       if(!active){   
         switchNetwork(selchainId)
       }else{
-        setActivating(false)
+    
       }
     
     } catch (ex) {
@@ -230,14 +229,13 @@ export default function Landing() {
   
   return (
     <>
-       {isOpenSwitchNetworkModal&&(<SwitchNetworkModal setIsOpen={setIsOpenSwitchNetworkModal}
+       {isOpenSwitchNetworkModal&&(<SwitchNetworkModal setIsOpenSwitchNetworkModal={setIsOpenSwitchNetworkModal}
                                       singleSelect={singleSelect} selectchainId={selectchainId} 
                                       switchNetwork={switchNetwork} connectWallet={connectWallet}
                                   account={account} active={active} chainId={chainId} />)}
       <UserNavbar         
         active={active}
-        chainId={chainId}
-        connectWallet={connectWallet}
+        chainId={chainId}       
         disconnectWallet={disconnectWallet}
         account={account}
         currentUserProfile={currentUserProfile}

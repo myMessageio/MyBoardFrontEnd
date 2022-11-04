@@ -3,6 +3,7 @@ import  Loading from "../../components/Loading/loading";
 import ImageUploader from "../../components/ImageUpload/index.js";
 import CreateModal from "../../components/modal/createModal";
 import CreateChannelModal from "../../components/modal/createChannelModal";
+import Abstract from "./abstract";
 
 
 import {paidContentCreatePayAmount,privatePostCreatePayAmount,contractAddresses,networkNames} from "../../Web3Api/env"
@@ -41,6 +42,7 @@ export default function PostCreate(
   const color="blueGray";
   const [postSort, setPostSort] = useState(0);
   const [descriptionContent, setDescriptionContent] = useState("");
+  const [abstractDescription, setAbstractDescription] = useState("");
   const [title, setTitleContent] = useState("")
   const [postImg,setPostImg]=useState("");
   const [linkUrl, setLinkUrl] = useState("")
@@ -97,7 +99,7 @@ if (Quill && !quill) {
 ////quill effect
 useEffect(() => {
   if (quill) {
-    quill.on('text-change', (delta, oldContents) => {     
+    quill.on('text-change', (delta, oldContents) => {          
       setDescriptionContent(quill.root.innerHTML)
     });
   }
@@ -118,6 +120,7 @@ useEffect(() => {
   },[account, active,chainId])
 
   useEffect(()=>{
+    setAbstractDescription("");
 
   },[postType])
   ////////pollItemsetfunc
@@ -143,7 +146,7 @@ useEffect(() => {
     setSubmitting("uploadingToIpfs");
   switch(postSort) {
     case 0://////post       
-    mainDataEncryptUploadToIpfs(JSON.stringify(descriptionContent),uploadPostDataToIpfs);         
+      mainDataEncryptUploadToIpfs(JSON.stringify(descriptionContent),uploadPostDataToIpfs);         
       break;
     case 1:///////image       
       imageEncryptUploadtoIpfs(postImg,uploadPostDataToIpfs);  
@@ -166,7 +169,7 @@ useEffect(() => {
 
 }
   async function uploadPostDataToIpfs(dataUrl,encryptionkey){
-    console.log(dataUrl,encryptionkey)
+   
    if(dataUrl&&encryptionkey){
     var content={
       "title":title,
@@ -175,6 +178,7 @@ useEffect(() => {
       "dataurl":dataUrl,
       "pollItems":pollItems,
       "expiretime":expireTime,
+      "abstractDescription":abstractDescription,
       "oc":ocState,
       "spolier":spolierState,
       "nsfw":nsfwState
@@ -269,7 +273,7 @@ useEffect(() => {
     }
     setSubmitting("uploadingToIpfs");
     var _contentUrl=await  jsonDataUploadtoIpfs(content)
-    console.log(_contentUrl)
+
     if(!_contentUrl){      
       ErrorToast("Error occurs in IPFS Uploading")
       setSubmitting("ready");
@@ -279,7 +283,7 @@ useEffect(() => {
     setSubmitting("channelcreateing");
     
     var res=await createCommunityChannel(chainId,MyBoardContract,account,channelName,_contentUrl,'QmU6cH3ZUtbW474bQrCK7dXuEqxVnFQqXgnTjBRiMZgikN')
-    console.log(res)
+
     if(res=="success"){
       SuccessToast("New community channel was created successfully!")
     }else{
@@ -307,7 +311,7 @@ useEffect(() => {
       formData.append("creator", account);      
      
       backendPostRequest("channel/userchannelsOnchain", formData).then(function(res){  
-        console.log(res);     
+    
 
         var myChannels=[];
         var usedChannels=[]
@@ -334,7 +338,7 @@ useEffect(() => {
 
       }).then(function (error){
         if(error){
-          console.log(error)
+   
           var myChannels=[];
           var usedChannels=[]  
        
@@ -366,15 +370,21 @@ useEffect(() => {
 
   }
   async function onSubmit(e){      
-    e.preventDefault();
+    e.preventDefault();  
     if(!selectChannelID){
       ErrorToast("You must select an Communicaty channel");
       return
     }
+    if(postType==2){
+      if(abstractDescription===""||abstractDescription==="<p><br></p>"||abstractDescription==="<p></p>"){
+        ErrorToast("You must input abstract descripton");
+        return;
+      }
+    }
     switch(postSort) {
       case 0://////post   
         if(descriptionContent==""||descriptionContent=="<p><br></p>"||descriptionContent=="<p></p>"){
-          ErrorToast("You must select an descripton");
+          ErrorToast("You must input  content");
           return;
         }
          
@@ -389,10 +399,13 @@ useEffect(() => {
       // code block
       break;
       case 3:///////Poll
-        if(descriptionContent==""||descriptionContent=="<p><br></p>"||descriptionContent=="<p></p>"){
-          ErrorToast("You must select an descripton");
-          return;
-        }
+      
+        if(descriptionContent==""||descriptionContent=="<p><br></p>"||descriptionContent=="<p></p>"||descriptionContent.toString==""){
+            ErrorToast("You must input an  content");
+            return;
+          }
+     
+        
         
         if(pollItems.length<2){
           ErrorToast("You must Add Options");
@@ -601,12 +614,14 @@ useEffect(() => {
                 setTitleContent(pp)}} />
               
             </div>
+            {postType==2&&(<Abstract abstractDescription={abstractDescription} setAbstractDescription={setAbstractDescription}/>)}
             {(postSort == 0 || postSort == 3)&&(
               <div  className= "relative w-full mb-3"id="link1"  >    
                 <div ref={quillRef}  className="rounded"/>        
                     
               </div>
               )}
+            
            
 
            {(postSort == 1 )&&(

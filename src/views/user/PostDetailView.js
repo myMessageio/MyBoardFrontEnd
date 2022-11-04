@@ -36,7 +36,7 @@ export default function PostDetalView({account,currentUserProfile, active,chainI
   const MesaTokenContract=getWriteContract(chainId,account,active,"mesa")
   useEffect(()=>{
     if(did){
-      console.log(did)
+      
       getPostDataFromBackend();
     }
   },[did])

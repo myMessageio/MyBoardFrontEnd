@@ -7,7 +7,6 @@ import reportWebVitals from './reportWebVitals';
 import "./assets/styles/tailwind.css";
 import "./assets/styles/custom.css";
 
-// import {MoralisProvider} from "react-moralis"
 import Web3 from 'web3';
 import { Web3ReactProvider } from '@web3-react/core'
 import { ThemeProvider } from "@material-tailwind/react";

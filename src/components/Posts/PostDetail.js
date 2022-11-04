@@ -6,6 +6,7 @@ import Loading from "../../components/Loading/loading" ;
 import { useQuill } from 'react-quilljs';
 import BlotFormatter from 'quill-blot-formatter';
 import 'quill/dist/quill.snow.css';
+
 import {SuccessToast,ErrorToast} from "../toast/toast"
 import Moment from 'react-moment'; 
 
@@ -413,11 +414,26 @@ export default function PostDetail({
                   
                   {postDetailInf.content&&(
                     <>
+                      {(postDetailInf.postType==2)&&(
+                        <>
+                            <h3 className="text-sm mb-2 font-semibold leading-normal">
+                              abstract
+                              </h3>                    
+                            <div className="ql-editor" 
+                                style={{height:"auto",padding: "0px"}}>
+                              <div dangerouslySetInnerHTML={{__html: postDetailInf.content.abstractDescription}}></div>
+                            </div>
+                        </>
+                      )}
+                      <h3 className="text-sm mb-2 font-semibold leading-normal">
+                        content
+                      </h3>   
                       {(postDetailInf.postSort==0||postDetailInf.postSort==3)&&(
                           <div className="ql-editor" 
                           style={{height:"auto",padding: "0px"}}>
                             <div dangerouslySetInnerHTML={{__html: postDetailInf.content.data}}></div>
                           </div>
+                          
                       )}           
                       {(postDetailInf.postSort==1)&&(
                         <div className="flex flex-wrap justify-center">
