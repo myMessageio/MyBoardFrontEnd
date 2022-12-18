@@ -140,6 +140,7 @@ export async function  getPostInf(account,postId,privatekey,deployedNetwork){
   // console.log(detailextract);
   var detailInf=null
   var pollVoteInf=null;
+  console.log(detailextract)
   if(!detailextract.postId){
     detailInf=null
   }else{
@@ -147,7 +148,7 @@ export async function  getPostInf(account,postId,privatekey,deployedNetwork){
     if(detailextract.contentUrl){   
       var contentstr=await fetchIPFSText(detailextract.contentUrl)
       content= await JSON.parse(contentstr)       
-      if(content.dataurl){
+      if(content.dataurl&&detailextract.encryptkey!=''){
         if(content.postSort==1){
           content.imageurl=await imageDecryptUrl(content.dataurl,detailextract.encryptkey)
         }else{

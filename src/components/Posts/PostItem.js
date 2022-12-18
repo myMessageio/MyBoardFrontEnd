@@ -50,13 +50,15 @@ export default function PostItem({
   },[active,account,chainId])  
   
   useEffect(()=>{
+    
 
   },[postDetailInf,copyItemName])
  
   /////get function
   async function getPostDataInf(){
     const [postdetail,postother,postpollvote] =await getPostInf(account,postId,"no",postedNetwork);
- 
+    // if(postdetail.postType==2)
+
     setPostInf([postdetail,postother,postpollvote])
    
   }

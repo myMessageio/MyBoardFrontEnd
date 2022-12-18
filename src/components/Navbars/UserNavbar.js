@@ -50,8 +50,7 @@ export default function  UserNavbar(
     const onScroll = () => setOffset(window.pageYOffset);
     // clean up code
     window.removeEventListener("scroll", onScroll);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    console.log(offset)
+    window.addEventListener("scroll", onScroll, { passive: true });   
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
  

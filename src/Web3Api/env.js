@@ -1,26 +1,26 @@
-  export const  backenddomain="https://mymessage.io";
-//export const  backenddomain="http://localhost";
+//export const  backenddomain="https://mymessage.io";
+ export const  backenddomain="http://localhost";
 
 const contractAddresses={
   "mbase":{
             mesa:"0x76e1C2ce6997A4C129Df88e0189bB9b5D3B5E349",
-            myboard:"0xA39053611C4BC297Be927E9fbe6CF8dF2C37d109",           
+            myboard:"0x6Ac9AbeCe81Ce862470dF113faCcD6FA56884228",           
             startblock:2914340 ,     
           },
   "mumbai":{
           mesa:"0x9E5EAFeD952136C87eaB9D29ab64D6e63534E091",
-          myboard:"0xA39053611C4BC297Be927E9fbe6CF8dF2C37d109",           
-          startblock:28332374,
+          myboard:"0xFF094223dE5A5C028aD0d5161Cb86206Be45cF86",           
+          startblock:28779108 ,
           },
   "testbsc":{
           mesa:"0x067a37347f4188a0e16759303827d8143e0Ff0Df",
-          myboard:"0xA39053611C4BC297Be927E9fbe6CF8dF2C37d109",           
-          startblock:23224239,
+          myboard:"1",           
+          startblock:23970859,
     },
   "moonbeam":{
           mesa:"0xcFE133cD392f36DA41d287E78316b8fBba51f8DA",
-          myboard:"0xA39053611C4BC297Be927E9fbe6CF8dF2C37d109",           
-          startblock:1962542,
+          myboard:"1",  //"0xb7f2388d2DAC68Bf205C6FbA52AD3FBf36855225"         
+          startblock:2144508,
   },
   "polygon":{
           mesa:"1",
@@ -29,8 +29,8 @@ const contractAddresses={
   },
   "bsc":{
         mesa:"0xb192d5fC358D35194282a1a06814aba006198010",
-        myboard:"0xA39053611C4BC297Be927E9fbe6CF8dF2C37d109",           
-        startblock:21717772,
+        myboard:"1",  //0x838e0Bc17E55D0C0CBEcF09b37CD98529289c633         
+        startblock:22440994,
   },
 }
 export {contractAddresses};
@@ -159,5 +159,7 @@ export const importNetworksParams={
   },
 }
 
-export const activeChainIds=[56,1284]
+// export const activeChainIds=[56,1284]
+export const activeChainIds=[1287,80001,137,1284,97,56]
+
 //dweb:/ipfs/QmSpj3GGNE5jBwH1bWQimzXPt8s5oozhHPTSeS9ZFm4ZKa

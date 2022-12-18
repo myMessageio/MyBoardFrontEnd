@@ -295,8 +295,23 @@ export default function PostCommentItem({
               
                 {postDetailInf.creator.toLowerCase()==selaccount.toLowerCase()&&(
                   <>
+
                     {postDetailInf.content&&(
                       <>
+                        {(postDetailInf.postType==2)&&(
+                          <>
+                              <h3 className="text-sm mb-2 font-semibold leading-normal">
+                                abstract
+                                </h3>                    
+                              <div className="ql-editor" 
+                                  style={{height:"auto",padding: "0px"}}>
+                                <div dangerouslySetInnerHTML={{__html: postDetailInf.content.abstractDescription}}></div>
+                              </div>
+                          </>
+                        )}
+                        <h3 className="text-sm mb-2 font-semibold leading-normal">
+                          content
+                        </h3>   
                         {(postDetailInf.postSort==0||postDetailInf.postSort==3)&&(
                             <div className="ql-editor" 
                             style={{height:"auto",padding: "0px"}}>

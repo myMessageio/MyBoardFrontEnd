@@ -312,8 +312,7 @@ contract MyBoard is Ownable{
         (selPost.postType==postTypes.Private&&compareStringsbyBytes(privatePostKey[_id],_privatekey))
         ||(selPost.postType==postTypes.Paid&&paidPostReadPermitted[msg.sender][_id])){  
         }else {                        
-            selPost.contentUrl='';     
-            selPost.encryptkey='';        
+            selPost.encryptkey='';                   
         }
         return (selPost);
     }

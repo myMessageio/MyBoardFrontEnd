@@ -62,7 +62,7 @@ const SwitchNetworkModal = ({setIsOpenSwitchNetworkModal, postSort,switchNetwork
                     <ul className="my-4 space-y-3">
                         
 
-                        <li key="1">
+                        {/* <li key="1">
                             <button  
                             onClick={()=>{selectNetwork(networkChainIds["bsc"]);}}
                             className="flex items-center p-3 text-base font-bold text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
@@ -97,7 +97,7 @@ const SwitchNetworkModal = ({setIsOpenSwitchNetworkModal, postSort,switchNetwork
                                 <span className="flex-1 ml-3 whitespace-nowrap">TestBSC</span>
                                
                             </button>
-                        </li>
+                        </li> */}
                         <li key="5">
                             <button  
                             onClick={()=>{selectNetwork(networkChainIds["mbase"]);}}
